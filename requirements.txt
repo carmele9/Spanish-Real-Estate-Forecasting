@@ -1,0 +1,45 @@
+# Core Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Data Ingestion & Cleaning
+python-dateutil>=2.8.2
+
+# Machine Learning & Models
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+lightgbm>=4.0.0
+statsmodels>=0.14.0
+prophet>=1.1.5
+
+# Deep Learning (Optional)
+tensorflow>=2.13.0
+torch>=2.0.0
+
+# Data Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Dashboard & Interactive
+streamlit>=1.28.0
+dash>=2.14.0
+dash-bootstrap-components>=1.4.0
+
+# Jupyter & Notebooks
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipython>=8.14.0
+ipywidgets>=8.1.0
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+requests>=2.31.0
+
+# Code Quality & Testing
+pytest>=7.4.0
+black>=23.9.0
+flake8>=6.1.0
+mypy>=1.5.0
