@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "pomdtr.excalidraw-editor",
+    "editor.defaultFoldingRangeProvider": "pomdtr.excalidraw-editor",
+    "notebook.defaultFormatter": "jithurjacob.nbpreviewer"
+}
