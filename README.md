@@ -13,9 +13,11 @@ This project analyzes and forecasts Spanish real estate market data to identify 
 - **Visualization**: Data visualization and interactive charts for insights
 
 ## Project Structure
+```
 ├── data/ # Dataset directory 
 ├── src/ # Source code, Jupyter notebooks for analysis and models 
 └── README.md # This file
+```
 
 ## Technology Stack
 - **Python 3.x**
