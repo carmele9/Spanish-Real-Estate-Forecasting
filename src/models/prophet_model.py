@@ -1,20 +1,24 @@
-from prophet import Prophet
+from neuralprophet import NeuralProphet
 from sklearn.metrics import mean_absolute_error
 import pandas as pd
 import numpy as np
 
 
-class ProphetModel:
+class NeuralProphetModel:
 
     def __init__(self):
 
-        self.model = Prophet(
+        self.model = NeuralProphet(
             yearly_seasonality=True,
             weekly_seasonality=False,
-            daily_seasonality=False
+            daily_seasonality=False,
+            seasonality_mode="additive",
+            learning_rate=0.01,
         )
 
         self.forecast = None
+        self.last_date = None
+        self.train_df = None
 
     def prepare_data(self, df):
 
@@ -30,14 +34,17 @@ class ProphetModel:
     def fit(self, train_df):
 
         prophet_df = self.prepare_data(train_df)
+        self.train_df = prophet_df
+        self.last_date = prophet_df["ds"].max()
 
-        self.model.fit(prophet_df)
+        self.model.fit(prophet_df, freq="QS")
 
     def predict(self, periods):
 
         future = self.model.make_future_dataframe(
+            df=self.train_df,
             periods=periods,
-            freq="Q"
+            n_historic_predictions=True
         )
 
         self.forecast = self.model.predict(future)
@@ -48,8 +55,8 @@ class ProphetModel:
 
         test_real = np.expm1(test_df["valor_log"])
 
-        preds = self.forecast["yhat"].tail(len(test_df))
-        preds_real = np.expm1(preds)
+        preds = self.forecast["yhat1"].tail(len(test_df))
+        preds_real = np.expm1(preds.values)
 
         mae = mean_absolute_error(
             test_real,
